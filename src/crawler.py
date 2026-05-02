@@ -8,18 +8,14 @@ class Crawler:
 
         self.base_url = "https://quotes.toscrape.com"
         self.visited_urls = set()
-        self.crawled_data = [] # Stores the extracted text from each page
+        self.crawled_data = [] 
 
     def fetch_page(self, url):
-        """
-        Sends an HTTP GET request to the specified URL.
-        Enforces a strict 6-second politeness window between requests.
-        """
         print(f"Fetching URL: {url}")
         try:
             response = requests.get(url, timeout=10)
             response.raise_for_status() 
-            print("Enforcing politeness window: Waiting 6 seconds")
+            print("Waiting 6 seconds")
             time.sleep(6)
             
             return response.text

@@ -34,36 +34,3 @@ class Indexer:
         except FileNotFoundError:
             print(f"Error: Index file '{file_path}' not found. Please run the 'build' command first.")
             return False
-
-    def print_word(self, word):
-        word = word.lower()
-        if word in self.inverted_index:
-            print(f"Word '{word}' found in the following pages:")
-            print(json.dumps(self.inverted_index[word], indent=4))
-        else:
-            print(f"Word '{word}' not found in the index.")
-
-    def find_query(self, query):
-        words = self.clean_text(query)
-        if not words:
-            print("Please enter a valid search query.")
-            return
-
-        result_urls = None
-        for word in words:
-            if word in self.inverted_index:
-                urls_with_word = set(self.inverted_index[word].keys())
-                if result_urls is None:
-                    result_urls = urls_with_word
-                else:
-                    result_urls = result_urls.intersection(urls_with_word)
-            else:
-                result_urls = set()
-                break
-
-        if result_urls:
-            print(f"Found {len(result_urls)} page(s) containing the query '{query}':")
-            for url in result_urls:
-                print(f"- {url}")
-        else:
-            print(f"No pages found containing the phrase: '{query}'")
