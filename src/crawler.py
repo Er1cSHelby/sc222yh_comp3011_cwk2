@@ -31,20 +31,27 @@ class Crawler:
     def parse_page(self, html_content, current_url):
         
         soup = BeautifulSoup(html_content, 'html.parser')
-            
-        page_text = soup.get_text(separator=' ', strip=True)
+    
 
-        self.crawled_data.append({
-            'url': current_url,
-            'text': page_text
-        })
+        quote_elements = soup.select('div.quote')
+    
+        for element in quote_elements:
+            text = element.find('span', class_='text').get_text(strip=True)
+            author = element.find('small', class_='author').get_text(strip=True)
+            tags = [tag.get_text(strip=True) for tag in element.select('a.tag')]
+        
+
+            full_quote_text = f"{text} {author} {' '.join(tags)}"
+        
+            self.crawled_data.append({
+                'url': current_url,
+                'text': full_quote_text
+            })
+    
 
         next_button = soup.select_one('li.next > a')
-        if next_button and next_button.has_attr('href'):
-            next_path = next_button['href']
-            next_url = urljoin(self.base_url, next_path)
-            return next_url
-            
+        if next_button:
+            return urljoin(self.base_url, next_button['href'])
         return None 
 
     def crawl(self):
