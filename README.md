@@ -2,11 +2,11 @@
 
 ## The program has three main parts:
 
-** Crawler **: It visits https://quotes.toscrape.com page by page. For each quote, it collects the quote text, the author name, and the tags. It waits 6 seconds between each page request to be polite to the server.
+**Crawler**: It visits https://quotes.toscrape.com page by page. For each quote, it collects the quote text, the author name, and the tags. It waits 6 seconds between each page request to be polite to the server.
 
-** Indexer **: It takes everything the crawler collected and builds an inverted index. Each word maps to a list of URLS and the positions where that word appears. The index is saved to a JSON file so you do not have to crawl again every time.
+**Indexer**: It takes everything the crawler collected and builds an inverted index. Each word maps to a list of URLS and the positions where that word appears. The index is saved to a JSON file so you do not have to crawl again every time.
 
-** Searcher **: It loads the saved index and searches for your query. If you type more than one word, it finds pages that contain all of them.
+**Searcher**: It loads the saved index and searches for your query. If you type more than one word, it finds pages that contain all of them.
 
 ## Project Structure
 SC222YH_COMP3011_CWK2/
