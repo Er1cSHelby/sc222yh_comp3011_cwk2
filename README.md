@@ -1,6 +1,7 @@
 # COMP3011 Coursework 2
 
-## The program has three main parts:
+## Overview 
+The program has three main parts:
 
 **Crawler**: It visits https://quotes.toscrape.com page by page. For each quote, it collects the quote text, the author name, and the tags. It waits 6 seconds between each page request to be polite to the server.
 
@@ -21,7 +22,7 @@ SC222YH_COMP3011_CWK2/
         test_search.py
     data/
         index.json
-    rquirements.txt
+    requirements.txt
     README.md
 
 ## Setup
