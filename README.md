@@ -64,8 +64,8 @@ python main.py find 'anyword you can type here'
 
 ## Running the Tests
 ```bash
-python -m unittest test_crawler.py
-python -m unittest test_indexer.py
-python -m unittest test_search.py
+python -m unittest tests/test_crawler.py
+python -m unittest tests/test_indexer.py
+python -m unittest tests/test_search.py
 ```
 The crawler test checks that the 6-second politeness window is respected. The indexer test checks that word positions are recorded correctly. The search test checks that multi-word queries run without errors.
