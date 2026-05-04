@@ -6,6 +6,16 @@ from search import Searcher
 INDEX_FILE = "data/index.json"
 
 def main():
+    """ 
+    Entry point for the search engine tool.
+    Parses command-line arguments and runs the appropriate command.
+    Available commands:
+        build: Crawl the website, build the inverted index, and save it to disk
+        load: Load the pre-built index from the file system
+        print: Print the index entry for a specific word
+        find: Search for pages containing a given query phrase
+    """
+    
     parser = argparse.ArgumentParser(description="COMP3011 Search Engine Tool")
     subparsers = parser.add_subparsers(dest="command", help="Available core commands")
 
